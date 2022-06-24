@@ -21,8 +21,8 @@
     SOFTWARE.
 */
 
-#define RGB_LED_VPORT       VPORTF
-#define RGB_LED_bm          PIN0_bm
+#define RGB_LED_VPORT       VPORTD
+#define RGB_LED_bm          PIN7_bm
 #define RGB_CLICK_NUM_LEDS  16
 #define NEOPIXEL_CHANNELS   3
 

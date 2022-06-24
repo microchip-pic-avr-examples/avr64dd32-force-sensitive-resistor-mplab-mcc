@@ -37,15 +37,15 @@
 static void (*PD5_InterruptHandler)(void);
 static void (*PD4_InterruptHandler)(void);
 static void (*PF3_InterruptHandler)(void);
-static void (*PF0_InterruptHandler)(void);
+static void (*PD7_InterruptHandler)(void);
 
 void PIN_MANAGER_Initialize()
 {
   /* DIR Registers Initialization */
     PORTA.DIR = 0x0;
     PORTC.DIR = 0x0;
-    PORTD.DIR = 0x10;
-    PORTF.DIR = 0x1;
+    PORTD.DIR = 0x90;
+    PORTF.DIR = 0x0;
 
   /* OUT Registers Initialization */
     PORTA.OUT = 0x0;
@@ -101,7 +101,7 @@ void PIN_MANAGER_Initialize()
     PD5_SetInterruptHandler(PD5_DefaultInterruptHandler);
     PD4_SetInterruptHandler(PD4_DefaultInterruptHandler);
     PF3_SetInterruptHandler(PF3_DefaultInterruptHandler);
-    PF0_SetInterruptHandler(PF0_DefaultInterruptHandler);
+    PD7_SetInterruptHandler(PD7_DefaultInterruptHandler);
 }
 
 /**
@@ -144,17 +144,17 @@ void PF3_DefaultInterruptHandler(void)
     // or set custom function using PF3_SetInterruptHandler()
 }
 /**
-  Allows selecting an interrupt handler for PF0 at application runtime
+  Allows selecting an interrupt handler for PD7 at application runtime
 */
-void PF0_SetInterruptHandler(void (* interruptHandler)(void)) 
+void PD7_SetInterruptHandler(void (* interruptHandler)(void)) 
 {
-    PF0_InterruptHandler = interruptHandler;
+    PD7_InterruptHandler = interruptHandler;
 }
 
-void PF0_DefaultInterruptHandler(void)
+void PD7_DefaultInterruptHandler(void)
 {
-    // add your PF0 interrupt custom code
-    // or set custom function using PF0_SetInterruptHandler()
+    // add your PD7 interrupt custom code
+    // or set custom function using PD7_SetInterruptHandler()
 }
 ISR(PORTA_PORT_vect)
 { 
@@ -179,6 +179,10 @@ ISR(PORTD_PORT_vect)
     {
        PD4_InterruptHandler(); 
     }
+    if(VPORTD.INTFLAGS & PORT_INT7_bm)
+    {
+       PD7_InterruptHandler(); 
+    }
     /* Clear interrupt flags */
     VPORTD.INTFLAGS = 0xff;
 }
@@ -189,10 +193,6 @@ ISR(PORTF_PORT_vect)
     if(VPORTF.INTFLAGS & PORT_INT3_bm)
     {
        PF3_InterruptHandler(); 
-    }
-    if(VPORTF.INTFLAGS & PORT_INT0_bm)
-    {
-       PF0_InterruptHandler(); 
     }
     /* Clear interrupt flags */
     VPORTF.INTFLAGS = 0xff;

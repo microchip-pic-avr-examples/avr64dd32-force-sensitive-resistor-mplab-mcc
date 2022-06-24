@@ -37,13 +37,11 @@ Copyright (c) [2012-2020] Microchip Technology Inc.
 #include <stdio.h>
 #include <math.h>
 
-//#include "mcc_generated_files/rn487x/rn487x.h"
-//#include "mcc_generated_files/rn487x/rn487x_interface.h"
 #include "util/delay.h"
 #include "RGBClick_4x4.h"
 
-
-#define ADC_MAX_VALUE_for_FORCE_CLICK 0xFCF /* In the test setup, VDD = 3.3V, ADC ref is VDD. 12 bit ADC count is 4095 at 3.3V
+// value between 0-4096 to represent the max value needed for the sensor to be "fully pressed"
+#define ADC_MAX_VALUE_for_FORCE_CLICK 3900 /* In the test setup, VDD = 3.3V, ADC ref is VDD. 12 bit ADC count is 4095 at 3.3V
                                                  When maximum force is applied on the Force sensor the voltage on ADC pin is 3.261V 
                                                  which gives ADC count ~ 0xFCF. It may vary from setup to setup */
 
@@ -102,57 +100,7 @@ void transmit_to_terminal(float number)
     printf("%%");
   
 }
-//
-///***************************************transmit_to_terminal********************************************
-//Convert float number (calculated strength) to string and send to USART1, BLE
-//**************************************************************************************************/
-//void transmit_to_BLE(float number)
-//{
-//	char string[50];
-//    
-//    dtostrf(number, 4, 2, string);
-//   
-//    RN487X_SendCmd((const uint8_t *)"Strength:", strlen("Strength:"));
-//    RN487X_SendCmd((const uint8_t *)string, strlen(string));
-//   
-//    RN487X.Write('%');
-//    RN487X.Write('\r');
-//    RN487X.Write('\n');	
-//}
-//
-///**************************************RN487x_Setup_Transparent_UART_service***********************
-//     Configure RN4871/70 in UART Transparent service
-//     Setup Bluetooth module name
-//**************************************************************************************************/
-//
-//void RN487X_Setup_Transparent_UART_service()
-//{
-//    uint8_t CommandMode[3]={"$$$"};   
-//    const char BLE_Name[13]={"tiny2AVR-DEMO"};  
-//    uint8_t TransparentUartService[6]={"SS,C0\r"};  
-//    uint8_t RebootCommand[4]={"R,1\r"}; 
-//    uint8_t FactoryResetCommand[5]={"SF,1\r"}; 
-//
-//    
-//    RN487X_Initialize(); /*Initialize the RN487x */
-//  
-//    RN487X_SendCmd((const uint8_t *)FactoryResetCommand, 5);  /* Factory reset command */
-//    RN487X.DelayMs(100);
-//    RN487X_SendCmd((const uint8_t *)CommandMode, 3); /* Send command mode */
-//    RN487X.DelayMs(100);
-//    RN487X_WaitForMsg((const char*)"CMD> ",strlen("CMD> ")); /* Wait for response after command mode */
-//    
-//    RN487X_SetName(BLE_Name,13); /* Configure the BLE module name */
-//   
-//    RN487X_SendCmd(TransparentUartService, 6);  /* Transparent UART Service mode */
-//    RN487X.DelayMs(100);
-//    RN487X_WaitForMsg((const char*)"AOK\r\nCMD> ",strlen("AOK\r\nCMD> ")); /* Wait for response after Transparent UART Service mode */
-//   
-//    RN487X_SendCmd(RebootCommand, 4); /* Reboot command */
-//    RN487X.DelayMs(100);
-//    RN487X_WaitForMsg((const char*)"Rebooting\r\n",strlen("Rebooting\r\n")); /* Wait for response after Reboot command */
-//}
-//
+
 /**************************************rgb_pattern_MixColor****************************************
     Different LEDs with different colors, set color for 16 LEDs by
     filling array rgb_array_output[0-15] with different colors
@@ -279,28 +227,17 @@ int main(void)
     SYSTEM_Initialize();
     rgb_pattern_MixColor();
 	rgb_pattern_Red_Green_White();
-    //RN487X_Setup_Transparent_UART_service();
     ADC0_StartConversion(ADC_MUXPOS_AIN19_gc);
-   	
-//    rgb_array_output[led_seq_to_glow[2]].green = 255;
-//	rgb_array_output[led_seq_to_glow[1]].red =  255;
-//	rgb_array_output[led_seq_to_glow[0]].blue = 255;
-//    rgb_update(rgb_array_output, RGB_CLICK_NUM_LEDS);
-    
+
     while(1)
     {
-
-
-
         if(ADC0_IsConversionDone())
         {
             adc_t.adc_result = ADC0_GetConversionResult();
             adc_t.adc_average_result = (uint16_t)(adc_t.adc_result >> (SAMPLES));
            	strength_percentage  = (float)(adc_t.adc_average_result * MAX_FORCE_PERCENT) / (ADC_MAX_VALUE_for_FORCE_CLICK);
             rgb_display_pattern_per_force();
-            transmit_to_terminal(strength_percentage);
-            //transmit_to_BLE(strength_percentage);           
-            
+            transmit_to_terminal(strength_percentage);            
         }
   
     }    
