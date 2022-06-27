@@ -3,7 +3,7 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>avr64dd32-force-sensitive-resistor-12-bit-adc-mplab-mcc</name>
+            <name>avr64dd32-force-sensitive-resistor-mplab-mcc</name>
             <creation-uuid>623aa6e8-6f91-40e2-9076-3b44c116c980</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>
