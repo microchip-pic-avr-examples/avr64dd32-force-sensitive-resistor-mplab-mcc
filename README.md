@@ -49,9 +49,9 @@ Demonstration showing the harder the force-sensitive resistor is pressed, the mo
 
 Setup the hardware as shown:
 
-TODO: scratch_1.png
+![Hardware Setup](images/hardware_setup.JPG)
 
-Then, configure the software using either a pre-compiled binary, or manually configure everything yourself.
+Configure the software using either a pre-compiled binary, or manually configure everything yourself.
 
 EZ setup (upload the pre-compiled binary):
 1. Download repo
@@ -60,28 +60,29 @@ EZ setup (upload the pre-compiled binary):
   - Device: AVR64DD32
   - Hardware Tool (make sure Curiosity Nano is plugged in): AVR64DD32 Curiosity Nano
   - Click next, then finish
-3. Make sure this project is set as main: right-click project name->Set as Main Project
-4. Right-click project->Make and program Device
+3. Make sure this project is set as main: right-click project name -> Set as Main Project
+4. Right-click project -> Make and program Device
 
-Setup From scratch - everything is manually configured from scratch, except for 3 files: main.c, and the driver files for the 4x4 LED grid: RGBClick_4x4.c and RGBClick_4x4.h.
+Continue to the [Operation section](#operation) to see how to the demo
+
+Setup from scratch - everything is manually configured from scratch, except for 3 files: main.c, and the driver files for the 4x4 LED grid: RGBClick_4x4.c and RGBClick_4x4.h.
 
 1. Create project
- - Setup hardware as shown in the picture above and plug it into your computer
- - File->New Project->Microchip Embedded->Standalone Project
- - Device: AVR64DD32, Tool->Curiosity Nano (the tool option can be selected later)
+ - Setup the hardware as shown in the picture above and plug it into your computer
+ - In MPLAB X, select File -> New Project -> Microchip Embedded -> Standalone Project
+ - Device: AVR64DD32, Tool -> Curiosity Nano (the tool option can be selected later)
  - Compiler Toolchain -> select any XC8 compiler (v2.36+)
- - Selection project name/location of your choosing, click finish.
+ - Select project name/location of your choosing, click finish.
 
 
-2. Setup MCC configuration (this handles all the hardware specific details)
+2. Setup MCC configuration (MCC handles all the hardware specific implementation details)
 
-  Launch MCC Melody (Tools->Embedded->MCC Code configurator->Select MCC Melody->Finish)
+  Launch MCC Melody (Tools -> Embedded -> MCC Code configurator -> Select MCC Melody -> Finish).
  We now need to setup the system clock, ADC, UART, and pin configuration. After setting all these things, main.c and RGBClick_4x4.c will handle everything else.
  1. Set sysclk to 10Mhz to give head room for the ADC's calculations
     - Project Resources -> System -> CLKCTRL
 
 
-  TODO: insert settings picture
 
 
   Configuration explanation:
@@ -89,20 +90,20 @@ Setup From scratch - everything is manually configured from scratch, except for 
   2. Set ADC configuration
     - Project resources -> Drivers -> ADC -> ADC0
 
-  TODO: insert scratch_3.png
+![ADC settings](images/adc_settings.png)
 
   Configuration explanation:
   - Clock pre-scalar:
-  - Sample Accumulation Number: 16 results are used because that is the maximum amount the AVR64DD32 supports
+  - Sample Accumulation Number: 16 results are used because that is the maximum accumulation size the AVR64DD32 supports
 
-  TODO: insert accumulation.png
+  ![ADC settings](images/accumulation.png)
 
   From: AVR64DD32 datasheet page 491
   - Sample Length:
   - Free Running Mode: Automatically starts the next ADC conversion as soon as the last one is finished.
-  - Positive Input Selection: As shown in the picture below, the Force Click's Analog Pin is in the top left, labelled AN. Since it is in the Curiosity base board's slot 2, that corresponds to the Curiosity Nano base board's 13th pin. On the AVR64DD32, the 13th pin is PORTF3, also known as AIN19, thus Analog input 19.
+  - Positive Input Selection: As shown in the picture below, the Force Click's Analog Pin, AN, is in the top left position. Since it is in the Curiosity base board's slot 2, that corresponds to the Curiosity Nano base board's 13th pin. On the AVR64DD32, the 13th pin is PORTF3, also known as AIN19, thus Analog input 19.
 
-  TODO: pin_selection.png
+  ![Pin Settings](images/pin_selection.png)
 
   3. Set UART configuration
   - Project Resources -> System -> UART -> UART0
@@ -127,7 +128,7 @@ Setup From scratch - everything is manually configured from scratch, except for 
 
 
 ## Operation
-
+<a id="operation"></a>
 <!-- Explain how to operate the example. Depending on complexity, step-by-step instructions and/or tables and/or images can be used -->
 
 
