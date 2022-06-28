@@ -74,24 +74,32 @@ Setup From scratch - everything is manually configured from scratch, except for 
 
 
 2. Setup MCC configuration (this handles all the hardware specific details)
- - Launch MCC Melody (Tools->Embedded->MCC Code configurator->Select MCC Melody->Finish)
- We now need to setup the system clock, ADC, UART, and pin configuration. After setting all these things, main.c and RGBClick_4x4.c will handle everything else.
 
+  Launch MCC Melody (Tools->Embedded->MCC Code configurator->Select MCC Melody->Finish)
+ We now need to setup the system clock, ADC, UART, and pin configuration. After setting all these things, main.c and RGBClick_4x4.c will handle everything else.
  1. Set sysclk to 10Mhz to give head room for the ADC's calculations
-  - Project Resources -> System -> CLKCTRL
-  - TODO: insert settings picture
+    - Project Resources -> System -> CLKCTRL
+
+
+  TODO: insert settings picture
+
+
+  Configuration explanation:
 
   2. Set ADC configuration
-  - Project resources -> Drivers -> ADC -> ADC0
+    - Project resources -> Drivers -> ADC -> ADC0
+
   TODO: insert scratch_3.png
 
   Configuration explanation:
   - Clock pre-scalar:
   - Sample Accumulation Number: 16 results are used because that is the maximum amount the AVR64DD32 supports
+
   TODO: insert accumulation.png
+
   From: AVR64DD32 datasheet page 491
   - Sample Length:
-  - Free Running Mode:
+  - Free Running Mode: Automatically starts the next ADC conversion as soon as the last one is finished.
   - Positive Input Selection: As shown in the picture below, the Force Click's Analog Pin is in the top left, labelled AN. Since it is in the Curiosity base board's slot 2, that corresponds to the Curiosity Nano base board's 13th pin. On the AVR64DD32, the 13th pin is PORTF3, also known as AIN19, thus Analog input 19.
 
   TODO: pin_selection.png
