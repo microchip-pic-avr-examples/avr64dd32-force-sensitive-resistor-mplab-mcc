@@ -51,7 +51,7 @@ Setup the hardware as shown:
 
 ![Hardware Setup](images/hardware_setup.JPG){width=50%}
 
-In the image above, there is an option 3D printed insert that goes below the Force Click to give the force resistor support. It is convenient, but not necessary at all.
+In the image above, there is an optional 3D printed insert that goes below the Force Click to give the force resistor support. It is convenient, but not necessary at all.
 
 Configure the software using either a pre-compiled binary, or manually configure everything yourself.
 
@@ -85,38 +85,38 @@ Setup from scratch - everything is manually configured from scratch, except for 
   2.1. Set ADC configuration
     - Project resources -> Drivers -> ADC -> + ADC0
 
-    ![ADC settings](images/adc_settings.png)(width=50%)
+    ![ADC settings](images/adc_settings.png){width=50%}
 
     Configuration explanation:
   - Sample Accumulation Number: This takes multiple samples before reporting a result. This filters out misnomers, giving a cleaner result. 16 is used instead of more because that is the maximum accumulation size amount (16-bits) the AVR64DD32 supports for a 12-bit reading.
 
     Math: (Max 12-bit reading = 2^12 = 4096) *(16 readings) = 65536 = 2^16, which is the size of the accumulation register.
 
-    ![ADC settings](images/accumulation.png)(width=50%) From: AVR64DD32 datasheet page 491
+    ![ADC settings](images/accumulation.png){width=50%} From: AVR64DD32 datasheet page 491
   - Left Adjust Result: The 12-bit value read is stored in a 16-bit register. This either left or right-justifies the result
   - Free Running Mode: Automatically starts the next ADC conversion as soon as the last one is finished.
   - Positive Input Selection: As shown in the picture below, the Force Click's Analog Pin, AN, is in the top left position. Since it is in the Curiosity base board's slot 2, that corresponds to the Curiosity Nano base board's 13th pin. On the AVR64DD32, the 13th pin is PORTF3, also known as AIN19, thus Analog input 19.
-  ![Pin Settings](images/pin_selection.png)
+  ![Pin Settings](images/pin_selection.png){width=50%}
 
   2.2. Set UART configuration
   - Device Resources -> Drivers -> UART -> + UART
   - Select USART0
-  ![UART Settings](images/uart1.png)
+  ![UART Settings](images/uart1.png){width=50%}
   - Select USART0_Peripherals, enable printf support
-  ![Printf](images/printf_support.png)
+  ![Printf](images/printf_support.png){width=50%}
   2.3. Set Pin Configuration
     - Set pins in Pin Grid View
     - ADC0 -> PORTF3
     - Pins, GPIO Output -> PORTD7
     - USART0, Tx -> PORTD4
     - USART0, Rx -> PORTD5
-  ![Pin Settings](images/pin_grid_view.png)
+  ![Pin Settings](images/pin_grid_view.png){width=50%}
 
   5. Set Pin Name
   - Project Resources -> System -> Pins
     - Set a name of pin PD7 to RGB_LED
     - Change the Input Sense Configuration for the ADC0 pin to Digital Input Buffer disabled
-  ![Pins](images/pins.png)
+  ![Pins](images/pins.png){width=50%}
   6. Generate code
     - Project Resources -> Generate
 
@@ -140,7 +140,7 @@ When you press on the resistor, the LEDs should light up proportionally. When th
 To view the pressure the resistor is reporting, open MPLAB data visualizer from the toolbar.
 Under connections, select the COM port the Curiosity Nano is connected to and hit play.
 Under the terminal input, select the same COM port. The pressure should now be displaying on the terminal.
-![Data visualizer](images/data_vis_output.png)
+![Data visualizer](images/data_vis_output.png){width=50%}
 
 ## Summary
 
