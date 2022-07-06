@@ -7,7 +7,7 @@
         "version": " ",
         "displayName": "",
         "projectName": "avr64dd32-force-sensitive-resistor-mplab-mcc",
-        "shortDescription": "Control LED array using a force sensitive resistor on an AVR64DD32. Applied force also sent over Bluetooth to app via RN4870/71.",
+        "shortDescription": "Control LED array using a force sensitive resistor on an AVR64DD32.",
         "ide": {
             "name": "MPLAB X",
             "semverRange": ">=6.0.0"

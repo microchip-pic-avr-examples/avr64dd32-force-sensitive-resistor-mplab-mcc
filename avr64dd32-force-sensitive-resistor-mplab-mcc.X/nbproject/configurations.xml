@@ -310,7 +310,7 @@
         <property key="memories.programmemory.ranges" value="0-7fff"/>
         <property key="poweroptions.powerenable" value="false"/>
         <property key="programmerToGoFilePath"
-                  value="C:/Users/C70636/MPLABXProjects/avr64dd32/avr64dd32-force-sensitive-resistor-12-bit-adc-mplab-mcc.X/debug/free/avr64dd32-force-sensitive-resistor-12-bit-adc-mplab-mcc_ptg"/>
+                  value="C:/Users/C70636/Git Repo/avr64dd32-force-sensitive-resistor-mplab-mcc/avr64dd32-force-sensitive-resistor-mplab-mcc.X/debug/free/avr64dd32-force-sensitive-resistor-mplab-mcc_ptg"/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.preservedataflash" value="false"/>
         <property key="programoptions.preservedataflash.ranges"
@@ -468,6 +468,11 @@
         <property key="user-pack-device-support" value=""/>
         <property key="wpo-lto" value="false"/>
       </XC8-config-global>
+      <nEdbgTool>
+        <property key="memories.programmemory.ranges" value="0-7fff"/>
+        <property key="programmerToGoFilePath"
+                  value="C:/Users/C70636/Git Repo/avr64dd32-force-sensitive-resistor-mplab-mcc/avr64dd32-force-sensitive-resistor-mplab-mcc.X/debug/pro/avr64dd32-force-sensitive-resistor-mplab-mcc_ptg"/>
+      </nEdbgTool>
     </conf>
   </confs>
 </configurationDescriptor>
