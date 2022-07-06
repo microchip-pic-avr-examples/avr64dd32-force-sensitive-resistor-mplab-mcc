@@ -40,8 +40,8 @@ void CLOCK_Initialize(void)
     //CLKOUT disabled; CLKSEL Internal high-frequency oscillator; 
     ccp_write_io((void*)&(CLKCTRL.MCLKCTRLA),0x0);
 
-    //PDIV 2X; PEN enabled; 
-    ccp_write_io((void*)&(CLKCTRL.MCLKCTRLB),0x1);
+    //PDIV 2X; PEN disabled; 
+    ccp_write_io((void*)&(CLKCTRL.MCLKCTRLB),0x0);
 
     //EXTS disabled; OSC32KS disabled; OSCHFS disabled; PLLS disabled; SOSC disabled; XOSC32KS disabled; 
     ccp_write_io((void*)&(CLKCTRL.MCLKSTATUS),0x0);
@@ -49,8 +49,8 @@ void CLOCK_Initialize(void)
     //RUNSTDBY disabled; 
     ccp_write_io((void*)&(CLKCTRL.OSC32KCTRLA),0x0);
 
-    //AUTOTUNE disabled; FRQSEL 20 MHz system clock; RUNSTDBY disabled; 
-    ccp_write_io((void*)&(CLKCTRL.OSCHFCTRLA),0x20);
+    //AUTOTUNE disabled; FRQSEL 4 MHz system clock (default); RUNSTDBY disabled; 
+    ccp_write_io((void*)&(CLKCTRL.OSCHFCTRLA),0xC);
 
     //TUNE 0x0; 
     ccp_write_io((void*)&(CLKCTRL.OSCHFTUNE),0x0);

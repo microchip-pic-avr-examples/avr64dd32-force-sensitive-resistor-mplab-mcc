@@ -86,6 +86,7 @@
                    projectFiles="false">
       <itemPath>Makefile</itemPath>
       <itemPath>avr64dd32-force-sensitive-resistor-12-bit-adc-mplab-mcc.mc3</itemPath>
+      <itemPath>avr64dd32-force-sensitive-resistor-mplab-mcc.mc3</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
@@ -333,7 +334,7 @@
         <targetDevice>AVR64DD32</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>noID</platformTool>
+        <platformTool>nEdbgTool</platformTool>
         <languageToolchain>XC8</languageToolchain>
         <languageToolchainVersion>2.36</languageToolchainVersion>
         <platform>3</platform>

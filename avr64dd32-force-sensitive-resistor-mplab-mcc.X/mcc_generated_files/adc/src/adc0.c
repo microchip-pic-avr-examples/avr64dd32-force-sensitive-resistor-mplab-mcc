@@ -67,8 +67,8 @@ int8_t ADC0_Initialize(void)
     // MUXNEG ADC input pin 1; 
     ADC0.MUXNEG = 0x1;
 
-    // SAMPLEN 20; 
-    ADC0.SAMPCTRL = 0x14;
+    // SAMPLEN 0; 
+    ADC0.SAMPCTRL = 0x0;
 
     // Window comparator high threshold 
     ADC0.WINHT = 0xFFF;
