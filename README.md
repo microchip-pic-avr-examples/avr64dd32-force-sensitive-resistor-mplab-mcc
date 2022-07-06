@@ -7,6 +7,8 @@
 <!-- This is where the introduction to the example goes, including mentioning the peripherals used -->
 Demonstration showing the harder the force-sensitive resistor is pressed, the more lights come on. The pressure is also sent out a UART interface that can be viewed locally. The AVR64DD32 contains the ADC and UART required to run this demonstration, called core-independent peripherals (CIPs). The LEDs light up in relation to the magnitude of the value the ADC reads. The ADC also internally filters the result by taking 16 measurements and reporting the average of them all, resulting in a smoother reading.
 
+![Demonstration](images/demonstration.gif)
+
 ## Related Documentation
 
 <!-- Any information about an application note or tech brief can be linked here. Use unbreakable links!
