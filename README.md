@@ -108,7 +108,7 @@ ADCC Configuration explanation:
   * Free Running Mode: Automatically starts the next ADC conversion as soon as the last one is finished.
   * Positive Input Selection: As shown in the picture below, the Force Click's Analog Pin, AN, is in the top left position. Since it is in the Curiosity base board's slot 2, that corresponds to the Curiosity Nano base board's 13th pin. On the AVR64DD32, the 13th pin is PORTF3, also known as AIN19, thus Analog input 19.
 
-  ![Pin Settings](images/pin_selection.png){width=40%}
+  ![Pin Settings](images/pin_selection.png){width=60%}
   <br>
 
 ##### Universal Asynchronous Receiver-Transmitter (UART)
