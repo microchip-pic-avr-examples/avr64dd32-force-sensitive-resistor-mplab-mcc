@@ -51,7 +51,7 @@ Setup the hardware as shown:
 
 *Note: The image below has an optional 3D printed insert that goes below the Force Click to give the force resistor support. It is convenient, but not required.*
 
-![Hardware Setup](images/hardware_setup.JPG){width=50%}
+![Hardware Setup](images/hardware_setup.JPG){width=30%}
 
 
 #### Configuration
@@ -93,14 +93,14 @@ Setup from scratch - everything is manually configured from scratch, except for 
 * Once the ADC is added, modify the following sections.
 
 
-  ![ADC settings](images/adc_settings.png){width=50%}
+  ![ADC settings](images/adc_settings.png){width=30%}
 
 ADCC Configuration explanation:
   * Sample Accumulation Number: This takes multiple samples before reporting a result. This filters out misnomers, giving a cleaner result. 16 is used instead of more because that is the maximum accumulation size amount (16-bits) the AVR64DD32 supports for a 12-bit reading.
 
    * Math: (Max 12-bit reading = 2^12 = 4096) * (16 readings) = 65536 = 2^16, which is the size of the accumulation register.
 
-     ![ADC settings](images/accumulation.png) {width=35%}
+     ![ADC settings](images/accumulation.png){width=30%}
 
   * Left Adjust Result: The 12-bit value read is stored in a 16-bit register. This either left or right-justifies the result
   * Free Running Mode: Automatically starts the next ADC conversion as soon as the last one is finished.
@@ -113,7 +113,7 @@ ADCC Configuration explanation:
   * Device Resources &rarr; Drivers &rarr; UART &rarr; + UART
     * Set UART PLIB Selector to USART0.
 
-  ![UART Settings](images/uart1.png){width=50%}
+  ![UART Settings](images/uart1.png){width=30%}
 
   * In the builder window, click USART0_Peripherals, enable printf support
 
