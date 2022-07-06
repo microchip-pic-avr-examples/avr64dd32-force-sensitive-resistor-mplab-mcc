@@ -51,7 +51,7 @@ Setup the hardware as shown:
 
 *Note: The image below has an optional 3D printed insert that goes below the Force Click to give the force resistor support. It is convenient, but not required.*
 
-![Hardware Setup](images/hardware_setup.JPG) {width=50%}
+![Hardware Setup](images/hardware_setup.JPG){width=50%}
 
 
 #### Configuration
@@ -93,7 +93,7 @@ Setup from scratch - everything is manually configured from scratch, except for 
 * Once the ADC is added, modify the following sections.
 
 
-  ![ADC settings](images/adc_settings.png) {width=50%}
+  ![ADC settings](images/adc_settings.png){width=50%}
 
 ADCC Configuration explanation:
   * Sample Accumulation Number: This takes multiple samples before reporting a result. This filters out misnomers, giving a cleaner result. 16 is used instead of more because that is the maximum accumulation size amount (16-bits) the AVR64DD32 supports for a 12-bit reading.
