@@ -49,103 +49,122 @@ Demonstration showing the harder the force-sensitive resistor is pressed, the mo
 
 Setup the hardware as shown:
 
-![Hardware Setup](images/hardware_setup.JPG){width=50%}
+*Note: The image below has an optional 3D printed insert that goes below the Force Click to give the force resistor support. It is convenient, but not required.*
 
-In the image above, there is an optional 3D printed insert that goes below the Force Click to give the force resistor support. It is convenient, but not required.
+![Hardware Setup](images/hardware_setup.JPG)
+
+
+#### Configuration
 
 Configure the software using either a pre-compiled binary, or manually configure everything yourself.
 
-EZ setup (upload the pre-compiled binary):
-1. Download repo
-2. In MPLAB, File -> Import -> Hex/Elf...(Prebuilt)File
-  - Select .hex file from repo (avr64dd32-force-sensitive-resistor-mplab-mcc.X/dist/free/production/avr64dd32-force-sensitive-resistor-mplab-mcc.X.production.hex)
-  - Device: AVR64DD32
-  - Hardware Tool (make sure Curiosity Nano is plugged in): AVR64DD32 Curiosity Nano
-  - Click next, then finish
-3. Make sure this project is set as main: right-click project name -> Set as Main Project
-4. Right-click project -> Make and program Device
+#### Option #1:
 
-Continue to the Operation section to see how to use the demo
+Easy setup (upload the pre-compiled binary):
 
+* Download the repository
+* In MPLAB, File &rarr; Import &rarr; Hex/Elf...(Prebuilt)File
+  * Select .hex file from repo (avr64dd32-force-sensitive-resistor-mplab-mcc.X/dist/free/production/avr64dd32-force-sensitive-resistor-mplab-mcc.X.production.hex)
+  * Device: AVR64DD32
+  * Hardware Tool (make sure Curiosity Nano is plugged in): AVR64DD32 Curiosity Nano
+  * Click next, then finish
+* Make sure this project is set as main: right-click project name &rarr; Set as Main Project
+* Right-click project &rarr; Make and program Device
+
+Once the steps above are completed, continue to the *Operation Section* to see how to operate the demo
+
+#### Option #2:
 Setup from scratch - everything is manually configured from scratch, except for 3 files: main.c, and the driver files for the 4x4 LED grid: RGBClick_4x4.c and RGBClick_4x4.h.
 
-1. Create project
- - Setup the hardware as shown in the picture above and plug it into your computer
- - In MPLAB X, select File -> New Project -> Microchip Embedded -> Standalone Project
- - Device: AVR64DD32, Tool -> AVRDD64DD32 Curiosity Nano  SN:...
- - Compiler Toolchain -> select any XC8 compiler (v2.36+)
- - Select project name/location of your choosing, click finish.
+##### Step #1: Create project
+ * In MPLAB X, select File &rarr; New Project &rarr; Microchip Embedded &rarr; Standalone Project
+ * Device: AVR64DD32, (plug in Curiosity Nano) Tool &rarr; AVRDD64DD32 Curiosity Nano  SN:...
+ * Compiler Toolchain &rarr; select any XC8 compiler (v2.36+)
+ * Select project name/location of your choosing, click finish.
+
+##### Step #2: Setup MPLAB Code Configurator (MCC)  TODO: ADD PICS OF CONFIG BITS
+* Launch MCC by clicking the blue "MCC" shield at the top toolbar &rarr; Select MCC Melody &rarr; Finish. After doing this we now need to setup the ADC, UART, and pin configuration.
+(If MCC is missing from the toolbar, install it by going Tools &rarr; Plugins &rarr; Available Plugins &rarr; MPLAB® Code Configurator &rarr; Install). After configuring MCC, main.c and RGBClick_4x4.c will handle everything else.
+
+##### Analog-to-Digital-Converter with Computation (ADCC)
+
+* Add the ADC to the project
+  * Select Device Resources &rarr; Drivers &rarr; ADC &rarr; + ADC0
+* Once the ADC is added, modify the following sections.
 
 
-2. Setup MCC configuration (MCC handles all the hardware specific implementation details)
+  ![ADC settings](images/adc_settings.png)
 
-  Launch MCC Melody (Tools -> Embedded -> MCC Code configurator -> Select MCC Melody -> Finish).
- We now need to setup the ADC, UART, and pin configuration. After setting all these things, main.c and RGBClick_4x4.c will handle everything else.
+ADCC Configuration explanation:
+  * Sample Accumulation Number: This takes multiple samples before reporting a result. This filters out misnomers, giving a cleaner result. 16 is used instead of more because that is the maximum accumulation size amount (16-bits) the AVR64DD32 supports for a 12-bit reading.
 
-  2.1. Set ADC configuration
-    - Project resources -> Drivers -> ADC -> + ADC0
+   * Math: (Max 12-bit reading = 2^12 = 4096) * (16 readings) = 65536 = 2^16, which is the size of the accumulation register.
 
-  ![ADC settings](images/adc_settings.png){width=50%}
+     ![ADC settings](images/accumulation.png)
 
-    Configuration explanation:
-  - Sample Accumulation Number: This takes multiple samples before reporting a result. This filters out misnomers, giving a cleaner result. 16 is used instead of more because that is the maximum accumulation size amount (16-bits) the AVR64DD32 supports for a 12-bit reading.
+  * Left Adjust Result: The 12-bit value read is stored in a 16-bit register. This either left or right-justifies the result
+  * Free Running Mode: Automatically starts the next ADC conversion as soon as the last one is finished.
+  * Positive Input Selection: As shown in the picture below, the Force Click's Analog Pin, AN, is in the top left position. Since it is in the Curiosity base board's slot 2, that corresponds to the Curiosity Nano base board's 13th pin. On the AVR64DD32, the 13th pin is PORTF3, also known as AIN19, thus Analog input 19.
 
-    Math: (Max 12-bit reading = 2^12 = 4096) * (16 readings) = 65536 = 2^16, which is the size of the accumulation register.
+  ![Pin Settings](images/pin_selection.png)
+  <br>
 
-    ![ADC settings](images/accumulation.png){width=50%} From: AVR64DD32 datasheet page 491
-  - Left Adjust Result: The 12-bit value read is stored in a 16-bit register. This either left or right-justifies the result
-  - Free Running Mode: Automatically starts the next ADC conversion as soon as the last one is finished.
-  - Positive Input Selection: As shown in the picture below, the Force Click's Analog Pin, AN, is in the top left position. Since it is in the Curiosity base board's slot 2, that corresponds to the Curiosity Nano base board's 13th pin. On the AVR64DD32, the 13th pin is PORTF3, also known as AIN19, thus Analog input 19.
+##### Universal Asynchronous Receiver-Transmitter (UART)
+  * Device Resources &rarr; Drivers &rarr; UART &rarr; + UART
+    * Set UART PLIB Selector to USART0.
 
-  ![Pin Settings](images/pin_selection.png){width=50%}
+  ![UART Settings](images/uart1.png)
 
-  2.2. Set UART configuration
-  - Device Resources -> Drivers -> UART -> + UART
-  - Select USART0
+  * In the builder window, click USART0_Peripherals, enable printf support
 
-  ![UART Settings](images/uart1.png){width=50%}
+  ![Printf](images/printf_support.png)
+<br>
 
-  - Select USART0_Peripherals, enable printf support
+##### Pin Configuration
 
-  ![Printf](images/printf_support.png){width=25%}
+  * Set pins in Pin Grid View
+    * ADC0 &rarr; PORTF3
+    * Pins, GPIO Output &rarr; PORTD7
+    * USART0, TX &rarr; PORTD4
+    * USART0, RX &rarr; PORTD5
 
-  2.3. Set Pin Configuration
-    - Set pins in Pin Grid View
-    - ADC0 -> PORTF3
-    - Pins, GPIO Output -> PORTD7
-    - USART0, Tx -> PORTD4
-    - USART0, Rx -> PORTD5
-
-  ![Pin Settings](images/pin_grid_view.png){width=50%}
-
-  5. Set Pin Name
-  - Project Resources -> System -> Pins
-    - Set a name of pin PD7 to RGB_LED
-    - Change the Input Sense Configuration for the ADC0 pin to Digital Input Buffer disabled
-
-  ![Pins](images/pins.png){width=50%}
-
-  6. Generate code
-    - Project Resources -> Generate
-
-  You can now close MCC
+  ![Pin Settings](images/pin_grid_view.png)
 
 
-3. Insert C files into Project
-  - Copy main.c, RGBClick_4x4.c, and RGBClick_4x4.h into your project directory
-  - Under the projects tab, right-click source files -> add existing item -> main.c, RGBClick_4x4.c
-  - Right-click header files -> add existing item -> RGBClick_4x4.h
-4. Make and Program Device
+  * Modify Pins
+    * Project Resources &rarr; System &rarr; Pins
+    * Set a name of pin PD7 to RGB_LED
+    * Change the Input Sense Configuration for the ADC0 pin to Digital Input Buffer disabled
+
+  ![Pins](images/pins.png)
+
+<br>
+
+#### Step #5: Generate the project
+  * Click the generate button in MCC by the Project Resources window to create the MCC generated header and source files
+
+    *You can now close MCC by clicking the blue MCC shield again*
+
+
+#### Step #6: Adding main.c, RGBClick_4x4.c and RGBClick_4x4.h
+* Insert the .c and .h files into the Project
+  * Copy **main.c**, **RGBClick_4x4.c**, and **RGBClick_4x4.h** into your project directory
+  * Add the files into your project
+    * Under the projects tab, right-click source files &rarr; add existing item &rarr; main.c, RGBClick_4x4.c
+    * Right-click header files &rarr; add existing item &rarr; RGBClick_4x4.h
+
+Make and Program Device
+* Right-click project name &rarr; Make and Program Device
 
 
 ## Operation
-<a id="operation"></a>
+
 <!-- Explain how to operate the example. Depending on complexity, step-by-step instructions and/or tables and/or images can be used -->
-To verify the LED array is connected and configured properly, on boot, the array will strobe random colors, green, then red before turning off.
+On boot, the array will strobe random colors, green, then red before turning off. This will verify the LED array is connected and configured properly.
 
-When you press on the resistor, the LEDs should light up proportionally. When the resistor is 100% pressed down, the lights will strobe different colors
+When the resistor is pressed, the LEDs should light up proportionally to the applied force. When the resistor is 100% pressed down, the lights will strobe through an array of colors.
 
-To view the pressure the resistor is reporting, open MPLAB data visualizer from the toolbar.
+To view the pressure the resistor is reporting, open MPLAB data visualizer from the toolbar (The Green Shield with DV on it).
 Under connections, select the COM port the Curiosity Nano is connected to and hit play.
 Under the terminal input, select the same COM port. The pressure should now be displaying on the terminal.
 
@@ -155,7 +174,7 @@ Under the terminal input, select the same COM port. The pressure should now be d
 
 <!-- Summarize what the example has shown -->
 This demo showed:
- - Advanced capabilities of built-in peripherals (CIPs) the AVR64DD32 has such as its ADC.
- - Ease of setting up CIPs through MCC, removing the headache of setting up a new MCU.
- - How to use the MikroE force click and 4x4 RGB Click with a Curiosity Nano Base Board
- - Integrated Data visualizer for viewing UART streams instead of requiring a 3rd party program
+ - Advanced capabilities of built-in peripherals (CIPs) the AVR64DD32 has such as its ADCC.
+ - Ease of setting up CIPs through MCC, removing the headache of configuring a new microcontroller.
+ - How to use the MikroE force click and 4x4 RGB Click with a Curiosity Nano Base Board.
+ - Integrated Data visualizer for viewing UART streams instead of requiring a 3rd party program.

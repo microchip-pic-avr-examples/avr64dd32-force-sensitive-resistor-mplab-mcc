@@ -41,7 +41,7 @@ Copyright (c) [2012-2020] Microchip Technology Inc.
 #include "RGBClick_4x4.h"
 
 // value between 0-4096 to represent the max value needed for the sensor to be "fully pressed"
-#define ADC_MAX_VALUE_for_FORCE_CLICK 3900 /* In the test setup, VDD = 3.3V, ADC ref is VDD. 12 bit ADC count is 4095 at 3.3V
+#define ADC_MAX_VALUE_for_FORCE_CLICK 4000 /* In the test setup, VDD = 3.3V, ADC ref is VDD. 12 bit ADC count is 4095 at 3.3V
                                                  When maximum force is applied on the Force sensor the voltage on ADC pin is 3.261V 
                                                  which gives ADC count ~ 0xFCF. It may vary from setup to setup */
 
