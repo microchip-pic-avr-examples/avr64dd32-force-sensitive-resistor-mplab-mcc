@@ -7,7 +7,7 @@
         "version": " ",
         "displayName": "",
         "projectName": "avr64dd32-force-sensitive-resistor-mplab-mcc",
-        "shortDescription": "Control LED array using a force sensitive resistor on an AVR64DD32.",
+        "shortDescription": "Control LED array using a force sensitive resistor on an AVR64DD32. Applied force also sent over Bluetooth to app via RN4870/71.",
         "ide": {
             "name": "MPLAB X",
             "semverRange": ">=6.0.0"
@@ -19,12 +19,12 @@
             }
         ],
         "dfp": {
-            "name": "",
-            "semverRange": ""
+            "name": "AVR-Dx_DFP",
+            "semverRange": "^1.10.124"
         },
         "configurator": {
-            "name": "",
-            "semverRange": ""
+            "name": "MCC",
+            "semverRange": ">=5.4.4"
         },
         "device": {
             "metaDataVersion": "1.0.0",
@@ -37,8 +37,23 @@
             }
         },
         "author": "Josh Booth",
-        "peripherals": [],
-        "keywords": [],
+        "peripherals": [
+            "ADC","USART", "ADCC"
+        ],
+        "keywords": [
+            "Differential ADC",
+            "12-bit ADC",
+            "Oversampling",
+            "Sample-accumulation",
+            "Free-Running",
+            "RGB-Click",
+            "Force-Click",
+            "Debugger",
+            "Virtual COM Port",
+            "Data Visualizer",
+            "Curiosity Nano",
+			"Melody"
+        ],
         "additionalData": {
             "longDescription": {
                 "metaDataVersion": "1.0.0",
