@@ -66,7 +66,7 @@ Easy setup (upload the pre-compiled binary):
 
 * Download the repository
 * In MPLAB, File &rarr; Import &rarr; Hex/Elf...(Prebuilt)File
-  * Select .hex file from repo (avr64dd32-force-sensitive-resistor-mplab-mcc.X/dist/free/production/avr64dd32-force-sensitive-resistor-mplab-mcc.X.production.hex)
+  * Select .hex file from repo (dist folder)
   * Device: AVR64DD32
   * Hardware Tool (make sure Curiosity Nano is plugged in): AVR64DD32 Curiosity Nano
   * Click next, then finish
