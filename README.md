@@ -54,6 +54,7 @@ Setup the hardware as shown:
 
 ![Hardware Setup](images/hardware_setup.JPG){width=432px}
 
+![STL](images/force_click_support.png){width=300px}
 
 #### Configuration
 
