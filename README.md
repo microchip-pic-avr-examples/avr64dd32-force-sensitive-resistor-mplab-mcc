@@ -18,8 +18,7 @@ Demonstration showing the harder the force-sensitive resistor is pressed, the mo
 - [AVR64DD32 Datasheet](https://ww1.microchip.com/downloads/aemDocuments/documents/MCU08/ProductDocuments/DataSheets/AVR64DD32-28-Prelim-DataSheet-DS40002315B.pdf)
 - [AVD64DD32 Curiosity Nano Hardware User Guide](https://ww1.microchip.com/downloads/aemDocuments/documents/MCU08/ProductDocuments/UserGuides/AVR64DD32CNANO-Prel-HW-UserGuide-DS50003323.pdf)
 - [Curiosity Nano Base Board Hardware User Guide](https://ww1.microchip.com/downloads/en/DeviceDoc/Curiosity-Nano-Base-for-Click-boards-User-Guide-50002839B.pdf)
-- [MikroE 4x4 RGB Click](https://www.mikroe.com/4x4-rgb-click)
-- [MikroE Force Click](https://www.mikroe.com/force-click)
+
 
 ## Software Used
 
@@ -42,8 +41,8 @@ Demonstration showing the harder the force-sensitive resistor is pressed, the mo
      - POT Click board™ [(MIKROE-3402)](https://www.mikroe.com/pot-click) -->
 - [AVR64DD32 Curiosity Nano](https://www.microchip.com/en-us/product/AVR64DD32)
 - Curiosity Nano Base for Click boards™ [(AC164162)](https://www.microchip.com/Developmenttools/ProductDetails/AC164162)
-- MikroE [4x4 RGB Click](https://www.mikroe.com/4x4-rgb-click)
-- MikroE [Force Click](https://www.mikroe.com/force-click)
+- [MikroE 4x4 RGB Click](https://www.mikroe.com/4x4-rgb-click)
+- [MikroE Force Click](https://www.mikroe.com/force-click)
 
 ## Setup
 
