@@ -30,7 +30,7 @@
             "metaDataVersion": "1.0.0",
             "category": "com.microchip.portal.contentRef",
             "content": {
-                "metaDataVersion": "1.0.0",
+                "metaDataVersion": "1.3.0",
                 "category": "com.microchip.device",
                 "name": "AVR64DD32",
                 "versionRange": "*"
@@ -38,7 +38,9 @@
         },
         "author": "Josh Booth",
         "peripherals": [
-            "ADC","USART", "ADCC"
+            "ADC",
+            "USART",
+            "ADCC"
         ],
         "keywords": [
             "Differential ADC",
