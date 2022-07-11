@@ -4,10 +4,10 @@
     "content": {
         "metaDataVersion": "1.3.0",
         "name": "com.microchip.mcu8.mplabx.project.avr64dd32-force-sensitive-resistor-mplab-mcc",
-        "version": " ",
-        "displayName": "",
+        "version": "1.0.0",
+        "displayName": "Pressure Demo with AVR64DD32",
         "projectName": "avr64dd32-force-sensitive-resistor-mplab-mcc",
-        "shortDescription": "Control LED array using a force sensitive resistor on an AVR64DD32. Applied force also sent over Bluetooth to app via RN4870/71.",
+        "shortDescription": "Control LED array using a force sensitive resistor on an AVR64DD32.",
         "ide": {
             "name": "MPLAB X",
             "semverRange": ">=6.0.0"

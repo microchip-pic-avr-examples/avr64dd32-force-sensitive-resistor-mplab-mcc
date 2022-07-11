@@ -75,14 +75,13 @@ Setup from scratch - everything is manually configured from scratch, except for 
 ADC Configuration explanation:
   * Sample Accumulation Number: This takes multiple samples before reporting a result. This reduces the effect of outliers to create a more stable result. 16 samples are used, instead of more, because that is the maximum accumulation size amount (16-bits) the AVR64DD32 supports for a 12-bit reading. (Max 12-bit reading = 2^12 = 4096) * (16 readings) = 65536 = 2^16, which is the size of the accumulation register.
 
-     ![ADC settings](images/accumulation.png){width=444px}
-     From the AVR64DD32 datasheet [page 491](https://ww1.microchip.com/downloads/aemDocuments/documents/MCU08/ProductDocuments/DataSheets/AVR64DD32-28-Prelim-DataSheet-DS40002315B.pdf#page=491)
+     ![ADC settings](images/accumulation.png){width=444px}<br>From the AVR64DD32 datasheet [page 491](https://ww1.microchip.com/downloads/aemDocuments/documents/MCU08/ProductDocuments/DataSheets/AVR64DD32-28-Prelim-DataSheet-DS40002315B.pdf#page=491)
 
   * Left Adjust Result: The 12-bit value read is stored in a 16-bit register. This either left or right-justifies the result
   * Free Running Mode: Automatically starts the next ADC conversion as soon as the last one is finished.
   * Positive Input Selection: As shown in the picture below, the Force Click's Analog Pin, AN, is in the top left position. Since it is in the Curiosity base board's slot 2, that corresponds to the Curiosity Nano base board's 13th pin. On the AVR64DD32, the 13th pin is PORTF3, also known as AIN19, thus Analog input 19.
 
-  ![Pin Settings](images/pin_selection.png){width=924px}
+  ![Pin Settings](images/pin_selection.png){width=924px}<br>
   From Curiosity Nano Base Board Hardware User Guide [page 5](https://ww1.microchip.com/downloads/en/DeviceDoc/Curiosity-Nano-Base-for-Click-boards-User-Guide-50002839B.pdf#page=5) and AVD64DD32 Curiosity Nano Hardware User Guide [page 25](https://ww1.microchip.com/downloads/aemDocuments/documents/MCU08/ProductDocuments/UserGuides/AVR64DD32CNANO-Prel-HW-UserGuide-DS50003323.pdf#page=25)
   <br>
 
