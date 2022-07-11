@@ -76,6 +76,7 @@ ADC Configuration explanation:
   * Sample Accumulation Number: This takes multiple samples before reporting a result. This reduces the effect of outliers to create a more stable result. 16 samples are used, instead of more, because that is the maximum accumulation size amount (16-bits) the AVR64DD32 supports for a 12-bit reading. (Max 12-bit reading = 2^12 = 4096) * (16 readings) = 65536 = 2^16, which is the size of the accumulation register.
 
      ![ADC settings](images/accumulation.png){width=444px}<br>From the AVR64DD32 datasheet [page 491](https://ww1.microchip.com/downloads/aemDocuments/documents/MCU08/ProductDocuments/DataSheets/AVR64DD32-28-Prelim-DataSheet-DS40002315B.pdf#page=491)
+     <br>
 
   * Left Adjust Result: The 12-bit value read is stored in a 16-bit register. This either left or right-justifies the result
   * Free Running Mode: Automatically starts the next ADC conversion as soon as the last one is finished.
