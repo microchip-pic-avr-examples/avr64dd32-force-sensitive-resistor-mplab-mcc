@@ -16,14 +16,14 @@ Demonstration showing the harder the force-sensitive resistor is pressed, the mo
 
 ## Software Used
 
-- MPLAB® X IDE 6.0.0 or newer [(MPLAB X IDE 6.0)](https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-x-ide?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_MMTCha_MPAE_Examples&utm_content=avr64dd32-force-sensitive-resistor-mplab-mcc-github)
-- MPLAB XC8 2.36.0 or newer compiler [(MPLAB XC8 2.36)](https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-xc-compilers?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_MMTCha_MPAE_Examples&utm_content=avr64dd32-force-sensitive-resistor-mplab-mcc-github)
-- MPLAB Code Configurator (MCC) 5.1.9 or newer [(MPLAB Code Configurator)](https://www.microchip.com/en-us/tools-resources/configure/mplab-code-configurator)
+- MPLAB® X IDE 6.0.0 or newer [(MPLAB X IDE 6.0)](https://www.microchip.com/en-us/tools-resources/develop/mplab-x-ide?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_MMTCha_avrdd&utm_content=avr64dd32-force-sensitive-resistor-mplab-mcc-github)
+- MPLAB XC8 2.36.0 or newer compiler [(MPLAB XC8 2.36)](https://www.microchip.com/en-us/tools-resources/develop/mplab-xc-compilers?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_MMTCha_avrdd&utm_content=avr64dd32-force-sensitive-resistor-mplab-mcc-github)
+- MPLAB Code Configurator (MCC) 5.1.9 or newer [(MPLAB Code Configurator)](https://www.microchip.com/en-us/tools-resources/configure/mplab-code-configurator?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_MMTCha_avrdd&utm_content=avr64dd32-force-sensitive-resistor-mplab-mcc-github)
 
 ## Hardware Used
 
-- [AVR64DD32 Curiosity Nano](https://www.microchip.com/en-us/product/AVR64DD32)
-- Curiosity Nano Base for Click boards™ [(AC164162)](https://www.microchip.com/Developmenttools/ProductDetails/AC164162)
+- [AVR64DD32 Curiosity Nano (EV72Y42A)](https://www.microchip.com/en-us/development-tool/EV72Y42A?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_MMTCha_avrdd&utm_content=avr64dd32-force-sensitive-resistor-mplab-mcc-github)
+- [Curiosity Nano Base for Click boards™ (AC164162)](https://www.microchip.com/en-us/development-tool/AC164162?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_MMTCha_avrdd&utm_content=avr64dd32-force-sensitive-resistor-mplab-mcc-github)
 - [MikroE 4x4 RGB Click](https://www.mikroe.com/4x4-rgb-click)
 - [MikroE Force Click](https://www.mikroe.com/force-click)
 
