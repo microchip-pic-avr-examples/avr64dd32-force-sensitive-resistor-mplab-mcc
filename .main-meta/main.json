@@ -48,10 +48,10 @@
             "Oversampling",
             "Sample Accumulation",
             "Free-Running",
-            "MikroE Click Board",
+            "Click Board",
             "MPLAB Data Visualizer",
             "Curiosity Nano",
-			"MCC Melody"
+			"Melody"
         ],
         "additionalData": {
             "longDescription": {
