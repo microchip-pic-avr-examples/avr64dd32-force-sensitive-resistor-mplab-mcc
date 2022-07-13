@@ -46,14 +46,12 @@
             "Differential ADC",
             "12-bit ADC",
             "Oversampling",
-            "Sample-accumulation",
+            "Sample Accumulation",
             "Free-Running",
             "MikroE Click Board",
-            "Debugger",
-            "Virtual COM Port",
-            "Data Visualizer",
+            "MPLAB Data Visualizer",
             "Curiosity Nano",
-			"Melody"
+			"MCC Melody"
         ],
         "additionalData": {
             "longDescription": {
