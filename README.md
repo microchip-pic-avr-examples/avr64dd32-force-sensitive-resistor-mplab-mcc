@@ -34,7 +34,7 @@ Setup the hardware as shown:
 
 *Note: The image below has an optional 3D printed insert that goes below the Force Click to give the force resistor support. It is convenient, but not required.*
 
-![Hardware Setup](images/hardware_setup.png){width=432px}
+![Hardware Setup](images/hardware_setup.png)
 
 #### Configuration
 
@@ -70,19 +70,19 @@ Setup from scratch - everything is manually configured from scratch, except for 
 * Once the ADC is added, modify the following sections.
 
 
-  ![ADC settings](images/adc_settings.png){width=444px}
+  ![ADC settings](images/adc_settings.png)
 
 ADC Configuration explanation:
   * Sample Accumulation Number: This takes multiple samples before reporting a result. This reduces the effect of outliers to create a more stable result. 16 samples are used, instead of more, because that is the maximum accumulation size amount (16-bits) the AVR64DD32 supports for a 12-bit reading. (Max 12-bit reading = 2^12 = 4096) * (16 readings) = 65536 = 2^16, which is the size of the accumulation register.
 
-     ![ADC settings](images/accumulation.png){width=444px}<br>From the AVR64DD32 datasheet [page 491](https://ww1.microchip.com/downloads/aemDocuments/documents/MCU08/ProductDocuments/DataSheets/AVR64DD32-28-Prelim-DataSheet-DS40002315B.pdf#page=491)
+     ![ADC settings](images/accumulation.png)<br>From the AVR64DD32 datasheet [page 491](https://ww1.microchip.com/downloads/aemDocuments/documents/MCU08/ProductDocuments/DataSheets/AVR64DD32-28-Prelim-DataSheet-DS40002315B.pdf#page=491)
      <br>
 
   * Left Adjust Result: The 12-bit value read is stored in a 16-bit register. This either left or right-justifies the result
   * Free Running Mode: Automatically starts the next ADC conversion as soon as the last one is finished.
   * Positive Input Selection: As shown in the picture below, the Force Click's Analog Pin, AN, is in the top left position. Since it is in the Curiosity base board's slot 2, that corresponds to the Curiosity Nano base board's 13th pin. On the AVR64DD32, the 13th pin is PORTF3, also known as AIN19, thus Analog input 19.
 
-  ![Pin Settings](images/pin_selection.png){width=924px}<br>
+  ![Pin Settings](images/pin_selection.png)<br>
   From Curiosity Nano Base Board Hardware User Guide [page 5](https://ww1.microchip.com/downloads/en/DeviceDoc/Curiosity-Nano-Base-for-Click-boards-User-Guide-50002839B.pdf#page=5) and AVD64DD32 Curiosity Nano Hardware User Guide [page 25](https://ww1.microchip.com/downloads/aemDocuments/documents/MCU08/ProductDocuments/UserGuides/AVR64DD32CNANO-Prel-HW-UserGuide-DS50003323.pdf#page=25)
   <br>
 
@@ -90,11 +90,11 @@ ADC Configuration explanation:
   * Device Resources &rarr; Drivers &rarr; UART &rarr; + UART
     * Set UART PLIB Selector to USART0.
 
-  ![UART Settings](images/uart1.png){width=462px}
+  ![UART Settings](images/uart1.png)
 
   * In the builder window, click USART0_Peripherals, enable Printf Support
 
-  ![Printf](images/printf_support.png){width=385px}
+  ![Printf](images/printf_support.png)
 <br>
 
 ##### Pin Configuration
@@ -105,7 +105,7 @@ ADC Configuration explanation:
     * USART0, TX &rarr; PORTD4
     * USART0, RX &rarr; PORTD5
 
-  ![Pin Settings](images/pin_grid_view.png){width=616px}
+  ![Pin Settings](images/pin_grid_view.png)
 
 
   * Modify Pins
@@ -113,8 +113,7 @@ ADC Configuration explanation:
     * Set a name of pin PD7 to RGB_LED
     * Change the Input Sense Configuration for the ADC0 pin to Digital Input Buffer disabled
 
-  ![Pins](images/pins.png){width=616px}
-
+  ![Pins](images/pins.png)
 
 #### Step #5: Generate the project
   * Click the generate button in MCC by the Project Resources window to create the MCC generated header and source files
@@ -143,7 +142,7 @@ When the resistor is pressed, the LEDs should light up proportionally to the app
 To view the pressure the resistor is reporting, open MPLAB Data Visualizer from the toolbar (The green shield with DV on it). Under connections, select the COM port the Curiosity Nano is connected to and hit play.
 Under the terminal input, select the same COM port. The pressure should now be displaying on the terminal.
 
-![Data visualizer](images/data_vis_output.png){width=770px}
+![Data visualizer](images/data_vis_output.png)
 
 ## Summary
 
