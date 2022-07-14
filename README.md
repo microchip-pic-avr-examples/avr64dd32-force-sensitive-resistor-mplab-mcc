@@ -34,7 +34,7 @@ Setup the hardware as shown:
 
 *Note: The image below has an optional 3D printed insert that goes below the Force Click to give the force resistor support. It is convenient, but not required.*
 
-![Hardware Setup](images/hardware_setup.JPG){width=432px}
+![Hardware Setup](images/hardware_setup.png){width=432px}
 
 #### Configuration
 
