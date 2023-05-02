@@ -27,11 +27,11 @@
 
 #include "RGBClick_4x4.h"
 
-#define T1H 700
-#define T1L 600
-#define T0H 350
-#define T0L 800
-
+// Updated to satisfy requirements of 4x4 RGB click v1.02
+#define T1H 1000
+#define T1L 300
+#define T0H 250
+#define T0L 1050
 
 
 #define NS_PER_CYCLE (1000000000/F_CPU)
