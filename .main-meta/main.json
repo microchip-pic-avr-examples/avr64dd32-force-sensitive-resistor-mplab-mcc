@@ -15,12 +15,12 @@
         "compiler": [
             {
                 "name": "XC8",
-                "semverRange": "^2.40.0"
+                "semverRange": "^2.41.0"
             }
         ],
         "dfp": {
             "name": "AVR-Dx_DFP",
-            "semverRange": "^1.10.124"
+            "semverRange": "^2.2.159"
         },
         "configurator": {
             "name": "MCC",
